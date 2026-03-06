@@ -119,7 +119,7 @@ function renderMasterRecords(container, searchQuery = "") {
 
 async function fetchPendingRequests() {
     try {
-        const response = await fetch('../process/get_requests_api.php');
+        const response = await fetch('process/get_requests_api.php');
         const data = await response.json();
         const tbody = document.getElementById('request-list');
         
@@ -151,7 +151,7 @@ async function fetchPendingRequests() {
 async function fetchOverviewData() {
     // This calls the departments and current document counts
     try {
-        const response = await fetch('../process/get_overview_api.php');
+        const response = await fetch('process/get_overview_api.php');
         const data = await response.json();
         
         const tbody = document.getElementById('dept-load-body');
