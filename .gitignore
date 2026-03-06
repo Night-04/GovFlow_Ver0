@@ -1,0 +1,20 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment/config files (if you use them for DB credentials)
+.env
+
+# Dependencies
+vendor/
+node_modules/
+
+# Editor settings
+.vscode/
+.idea/
+
+# Cache
+*.cache
