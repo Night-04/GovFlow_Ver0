@@ -1,0 +1,231 @@
+/* Login Specific Styles */
+.login-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); /* Deep Gov Blue */
+}
+
+.login-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.login-header h1 {
+    margin: 10px 0 5px;
+    color: #1e3a8a;
+    font-size: 1.8rem;
+    letter-spacing: -1px;
+}
+
+.login-header p {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+}
+
+.login-logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.input-group {
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: 8px;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper i {
+    position: absolute;
+    left: 12px;
+    color: #94a3b8;
+    font-size: 1.2rem;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-wrapper input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background: #1e3a8a;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-btn:hover { background: #1e40af; transform: translateY(-1px); }
+
+.login-footer {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #f1f5f9;
+    font-size: 0.9rem;
+}
+
+.login-footer a { color: #3b82f6; font-weight: 600; text-decoration: none; }
+
+#code-input-area{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Registration Details Specific Styling */
+
+.wide-card {
+    max-width: 550px !important;
+    width: 100%;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 5px;
+}
+
+.form-row .input-group {
+    flex: 1;
+}
+
+/* Custom Select Styling */
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    background: white;
+    font-family: inherit;
+    color: #1e293b;
+    outline: none;
+    cursor: pointer;
+    appearance: none; /* Removes default arrow to use custom styling */
+}
+
+select:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Captcha Box Styling */
+.captcha-container {
+    background: #f8fafc;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px dashed #cbd5e1;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.captcha-container label {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+    color: #475569;
+}
+
+.captcha-container strong {
+    color: #1e3a8a;
+    font-size: 1.1rem;
+}
+
+/* The red border */
+.input-error {
+    border: 2px solid #ef4444 !important;
+    background-color: #fef2f2;
+}
+
+/* The error message text */
+.error-msg {
+    color: #ef4444;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    display: none; /* Hidden by default */
+}
+
+/* Mobile Responsiveness for Form Rows */
+@media (max-width: 480px) {
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+/*Shaking red effect when the user gives wrong verification code*/
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.shake {
+    animation: shake 0.2s ease-in-out 0s 2;
+}
+
+/* Ensure the input looks clean when focused even with an error */
+#verify-code:focus {
+    outline: none;
+    border-color: #3b82f6; /* Back to blue when typing */
+}
+
+
+/*Shaking red effect for the Captcha test when user answer is wrong*/
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-8px); }
+    40% { transform: translateX(8px); }
+    60% { transform: translateX(-8px); }
+    80% { transform: translateX(8px); }
+}
+
+.shake {
+    animation: shake 0.4s ease-in-out;
+}
+
+/* Make the error look official */
+.error-msg {
+    display: block;
+    font-weight: 500;
+}
