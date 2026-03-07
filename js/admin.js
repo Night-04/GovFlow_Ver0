@@ -67,10 +67,10 @@ function renderRequests(container) {
             <table class="data-table">
                 <thead>
                     <tr>
-                        <th>Req ID</th>
+                        <th>Request ID</th>
                         <th>Name</th>
-                        <th>Email</th>
                         <th>Department</th>
+                        <th>Request Code</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -128,13 +128,22 @@ async function fetchPendingRequests() {
             return;
         }
 
-        tbody.innerHTML = data.map(req => `
+        tbody.innerHTML = data.map(req => {
+            // Safely format the middle initial/name and extension so it doesn't print "null"
+            const middle = req.middle_name ? ` ${req.middle_name} ` : ' ';
+            const ext = req.name_extension ? ` ${req.name_extension}` : '';
+            const fullName = `${req.first_name}${middle}${req.surname}${ext}`;
+
+            return `
             <tr>
-                <td><strong>REQ-${String(req.request_id).padStart(4, '0')}</strong></td>
-                <td>${req.first_name} ${req.surname} ${req.name_extension || ''}</td>
-                <td>${req.department_name}</td>
-                <td style="font-family: monospace; font-weight: bold; color: #1e3a8a; background: #f1f5f9; text-align: center; border-radius: 4px;">
-                    ${req.request_code}
+                <td>REQ-${String(req.request_id).padStart(4, '0')}</td>
+                <td>${fullName}</td>
+                <td>
+                    ${req.department_name}<br>
+                    <span style="font-size: 0.8rem; color: #64748b; text-transform: capitalize;">Role: ${req.requested_role}</span>
+                </td>
+                <td id="requested-role">
+                    <strong>${req.request_code}<strong>
                 </td>
                 <td>
                     <button class="btn-approve" onclick="approveUser(${req.request_id})">Accept</button>
@@ -142,7 +151,8 @@ async function fetchPendingRequests() {
                     <button class="btn-block" onclick="blockUser(${req.request_id})" style="background-color: #dc2626; color: white;">Block</button>
                 </td>
             </tr>
-        `).join('');
+            `;
+        }).join('');
     } catch (error) {
         console.error("Error loading requests:", error);
     }

@@ -5,9 +5,10 @@ header('Content-Type: application/json');
 // 1. Security Check & DB Connection
 require_once '../includes/db_connect.php'; // Make sure this path is correct!
 
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'administrator') {
+// Security Check: Admin only
+if (!isset($_SESSION['user_id']) || !isset($_SESSION['role']) || $_SESSION['role'] !== 'administrator') {
     http_response_code(403);
-    echo json_encode(['error' => 'Unauthorized']);
+    echo json_encode(['error' => 'Unauthorized access.']);
     exit();
 }
 
